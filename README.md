@@ -1,2 +1,2 @@
 # Code
-Code samples
+Just a place to store helpful code samples
