@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/local/bin/python3
 
 names = ['Cecilia', 'Lise', 'Marie']
 letters = [len(n) for n in names]
