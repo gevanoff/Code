@@ -102,3 +102,22 @@ for i in range(3):
   print('Loop %d' % i) #Loop 0, Loop 1, Loop 2...
 else:
   print('Else block!') #...Else block! Only prints if loop completes! V. Confusing
+
+#Use try/except/else/finally
+try:
+  attempt_to_do_this_thing()
+except SpecificError:
+  print("I ran into a SpecificError!")
+except:
+  print("I ran into some other Error!")
+else:
+  print("The attempt_to_do_this_thing succeeded!")
+finally:
+  print("I print in any case!")
+
+#Raise exceptions from Functions rather than returning None
+def divide(a, b)
+  try:
+    return a / b
+  except ZeroDivisionError as e:
+    raise ValueError('Invalid inputs') from e
