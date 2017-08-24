@@ -116,8 +116,45 @@ finally:
   print("I print in any case!")
 
 #Raise exceptions from Functions rather than returning None
+#"None" should not have a special meaning
 def divide(a, b)
   try:
     return a / b
   except ZeroDivisionError as e:
     raise ValueError('Invalid inputs') from e
+
+#Know how closures interact with Variable scope (see sortpriority.py)
+#Closures are functions that refer to variables from the scope in which they were defined.
+#Use "nonlocal" only in simple functions to assign value out of a closure
+
+def sort_priority2(numbers, group):
+  found = False # Scope: 'sort_priority2'
+  def helper(x):
+    if x in group:
+      found = True # Scope: 'helper' -- Whoops!
+      return (0, x)
+    return (1, x)
+  numbers.sort(key=helper)
+  return found
+
+def sort_priority3(numbers, group):
+  found = False
+  def helper(x):
+    nonlocal found
+    if x in group:
+      found = True
+      return (0, x)
+    return (1, x)
+  numbers.sort(key=helper)
+  return found
+
+#Consider Generators instead of returning lists (see generator.py)
+def index_words(text):
+  result = []
+  if text:
+    result.append(0)
+  for index, letter in enumerate(text):
+    if letter == ' ':
+      result.append(index + 1)
+  return result
+
